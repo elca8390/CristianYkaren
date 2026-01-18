@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="CyK Heart">
+  <defs>
+    <linearGradient id="g1" x1="0%" x2="0%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#f9d5e5" />
+      <stop offset="100%" stop-color="#f9b8c4" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="12" fill="#fff3ec" />
+  <path
+    d="M32 50s-3.8-3.2-8.5-7.7C18.2 37.3 14 33.1 14 27.7 14 22.3 18.2 18 23.6 18c2.9 0 5.6 1.4 7.4 3.7 1.8-2.3 4.5-3.7 7.4-3.7 5.4 0 9.6 4.3 9.6 9.7 0 5.4-4.2 9.6-9.5 14.6C35.8 46.8 32 50 32 50Z"
+    fill="url(#g1)"
+    stroke="#f091a5"
+    stroke-width="1.5"
+  />
+  <text x="32" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="11" fill="#3c2f1f">
+    CyK
+  </text>
+</svg>
