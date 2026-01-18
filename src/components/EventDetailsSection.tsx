@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+﻿import { motion } from "framer-motion";
 import { Calendar, Clock, MapPin, Church } from "lucide-react";
 
 const EventDetailsSection = () => {
@@ -7,7 +7,7 @@ const EventDetailsSection = () => {
       icon: Calendar,
       title: "Fecha",
       info: "28 de Febrero, 2026",
-      subinfo: "Sábado",
+      subinfo: "SÃ¡bado",
     },
     {
       icon: Clock,
@@ -19,7 +19,7 @@ const EventDetailsSection = () => {
       icon: MapPin,
       title: "Lugar",
       info: "Finca Villa Zamay",
-      subinfo: "Caguán, Neiva, Huila",
+      subinfo: "Caguan, Neiva, Huila - a 5 minutos del Caguan via al Triunfo",
     },
   ];
 
@@ -76,13 +76,13 @@ const EventDetailsSection = () => {
           className="text-center mt-12"
         >
           <a
-            href="https://maps.google.com/?q=Caguan+Neiva+Huila+Colombia"
+            href="https://www.google.com/maps/place/Villa+Zamay/@2.864719,-75.2219364,17z/data=!4m12!1m5!3m4!2zMsKwNTEnNTMuMCJOIDc1wrAxMycwOS43Ilc!8m2!3d2.864719!4d-75.2193615!3m5!1s0x8e3b7192e602cb87:0x175a64451ef36b84!8m2!3d2.8654073!4d-75.2191297!16s%2Fg%2F11jt4nr42g?hl=es&entry=ttu&g_ep=EgoyMDI2MDExMy4wIKXMDSoKLDEwMDc5MjA3M0gBUAM%3D"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-8 py-4 bg-secondary text-secondary-foreground rounded-full font-body font-medium hover:shadow-soft transition-all duration-300 hover:scale-105"
           >
             <MapPin className="w-5 h-5" />
-            Ver ubicación en Google Maps
+            Ver ubicaciÃ³n en Google Maps
           </a>
         </motion.div>
       </div>
@@ -91,3 +91,6 @@ const EventDetailsSection = () => {
 };
 
 export default EventDetailsSection;
+
+
+

@@ -7,7 +7,6 @@ const RSVPSection = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
     guests: "1",
     attendance: "",
     message: "",
@@ -15,31 +14,42 @@ const RSVPSection = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!formData.name || !formData.attendance) {
+
+    if (!formData.name || !formData.attendance || Number(formData.guests) < 1) {
       toast({
         title: "Por favor completa los campos requeridos",
-        description: "Nombre y confirmación de asistencia son obligatorios.",
+        description: "Nombre, confirmacion y numero de asistentes son obligatorios.",
         variant: "destructive",
       });
       return;
     }
 
     setIsLoading(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
+
+    const attendanceText =
+      formData.attendance === "yes" ? "Asistire a la boda" : "No podre asistir a la boda";
+    const message = [
+      "Confirmacion de asistencia",
+      `Nombre: ${formData.name}`,
+      attendanceText,
+      `Numero de asistentes: ${formData.guests}`,
+      `Mensaje: ${formData.message || "Sin mensaje adicional"}`,
+    ].join("\n");
+
+    const whatsappUrl = `https://wa.me/573107989169?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank");
+
     setIsLoading(false);
     setIsSubmitted(true);
-    
+
     toast({
-      title: "¡Gracias por confirmar!",
-      description: formData.attendance === "yes" 
-        ? "Nos vemos el 28 de Febrero 💕" 
-        : "Lamentamos que no puedas asistir, te tendremos presente.",
+      title: "Gracias por confirmar!",
+      description:
+        formData.attendance === "yes"
+          ? "Nos vemos el 28 de Febrero :)"
+          : "Lamentamos que no puedas asistir, te tendremos presente.",
     });
   };
 
@@ -66,15 +76,11 @@ const RSVPSection = () => {
             >
               <Check className="w-10 h-10 text-foreground" />
             </motion.div>
-            <h3 className="font-display text-4xl text-foreground mb-4">
-              ¡Gracias!
-            </h3>
+            <h3 className="font-display text-4xl text-foreground mb-4">Gracias!</h3>
             <p className="font-heading text-lg text-muted-foreground">
-              Hemos recibido tu confirmación. 
+              Hemos recibido tu confirmacion.
               {formData.attendance === "yes" && (
-                <span className="block mt-2">
-                  ¡Nos emociona celebrar contigo! 💕
-                </span>
+                <span className="block mt-2">Nos emociona celebrar contigo!</span>
               )}
             </p>
           </motion.div>
@@ -97,7 +103,7 @@ const RSVPSection = () => {
             Confirma tu Asistencia
           </h2>
           <p className="font-heading text-lg text-muted-foreground italic">
-            Tu presencia hará este día aún más especial
+            Tu presencia hara este dia aun mas especial
           </p>
         </motion.div>
 
@@ -125,25 +131,10 @@ const RSVPSection = () => {
             />
           </div>
 
-          {/* Email */}
-          <div className="mb-6">
-            <label className="block font-body text-sm font-medium text-foreground mb-2">
-              Correo electrónico
-            </label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full px-4 py-3 rounded-xl border border-border bg-background font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
-              placeholder="tu@email.com"
-            />
-          </div>
-
           {/* Attendance */}
           <div className="mb-6">
             <label className="block font-body text-sm font-medium text-foreground mb-3">
-              ¿Podrás asistir? *
+              Podras asistir? *
             </label>
             <div className="grid grid-cols-2 gap-4">
               <label
@@ -161,8 +152,12 @@ const RSVPSection = () => {
                   onChange={handleChange}
                   className="sr-only"
                 />
-                <Heart className={`w-5 h-5 ${formData.attendance === "yes" ? "text-pink fill-pink" : "text-muted-foreground"}`} />
-                <span className="font-body font-medium">Sí, asistiré</span>
+                <Heart
+                  className={`w-5 h-5 ${
+                    formData.attendance === "yes" ? "text-pink fill-pink" : "text-muted-foreground"
+                  }`}
+                />
+                <span className="font-body font-medium">Si, asistire</span>
               </label>
               <label
                 className={`flex items-center justify-center gap-2 px-4 py-4 rounded-xl border-2 cursor-pointer transition-all ${
@@ -179,38 +174,39 @@ const RSVPSection = () => {
                   onChange={handleChange}
                   className="sr-only"
                 />
-                <span className="font-body font-medium">No podré asistir</span>
+                <span className="font-body font-medium">No podre asistir</span>
               </label>
             </div>
           </div>
 
           {/* Number of guests */}
-          {formData.attendance === "yes" && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              className="mb-6"
-            >
-              <label className="block font-body text-sm font-medium text-foreground mb-2">
-                Número de acompañantes
-              </label>
-              <div className="relative">
-                <Users className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-                <select
-                  name="guests"
-                  value={formData.guests}
-                  onChange={handleChange}
-                  className="w-full pl-12 pr-4 py-3 rounded-xl border border-border bg-background font-body text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all appearance-none"
-                >
-                  <option value="1">Solo yo</option>
-                  <option value="2">2 personas</option>
-                  <option value="3">3 personas</option>
-                  <option value="4">4 personas</option>
-                  <option value="5">5 o más personas</option>
-                </select>
-              </div>
-            </motion.div>
-          )}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="mb-6"
+          >
+            <label className="block font-body text-sm font-medium text-foreground mb-2">
+              Numero de asistentes (incluyendote) *
+            </label>
+            <div className="relative">
+              <Users className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+              <input
+                type="number"
+                name="guests"
+                min={1}
+                max={20}
+                step={1}
+                inputMode="numeric"
+                value={formData.guests}
+                onChange={handleChange}
+                className="w-full pl-12 pr-4 py-3 rounded-xl border border-border bg-background font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                placeholder="1"
+                required
+              />
+            </div>
+          </motion.div>
 
           {/* Message */}
           <div className="mb-8">

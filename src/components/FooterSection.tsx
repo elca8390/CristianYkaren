@@ -12,7 +12,7 @@ const FooterSection = () => {
           transition={{ duration: 0.8 }}
         >
           <h2 className="font-display text-5xl md:text-6xl text-foreground mb-4">
-            Karen & Cristian
+            Cristian & Karen
           </h2>
           <p className="font-heading text-xl text-muted-foreground mb-6 italic">
             28 de Febrero, 2026
@@ -26,7 +26,10 @@ const FooterSection = () => {
 
           <div className="mt-8">
             <p className="font-body text-xs text-muted-foreground">
-              #KarenYCristian2026
+              #CristianYKaren2026
+            </p>
+            <p className="font-body text-xs text-muted-foreground mt-2">
+              © <a href="https://ecoingenieria.co" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground">ecoingenieria.co</a>
             </p>
           </div>
         </motion.div>

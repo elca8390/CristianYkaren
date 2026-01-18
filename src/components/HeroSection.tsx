@@ -41,9 +41,10 @@ const HeroSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="font-body text-sm tracking-[0.3em] uppercase text-muted-foreground mb-4"
+            className="inline-flex items-center justify-center gap-2 px-5 py-2 rounded-full bg-card/80 border border-pink/50 shadow-romantic font-body text-sm md:text-base uppercase text-foreground mb-6"
           >
-            Nos casamos
+            <Heart className="w-4 h-4 text-pink fill-pink" />
+            <span className="tracking-[0.35em]">Nos casamos</span>
           </motion.p>
 
           {/* Main Photo */}
@@ -57,7 +58,7 @@ const HeroSection = () => {
             <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-pink-light shadow-romantic">
               <img
                 src={coupleMain}
-                alt="Karen Yadira y Cristian David"
+                alt="Cristian David y Karen Yadira"
                 className="w-full h-full object-cover object-top"
               />
             </div>
@@ -77,9 +78,9 @@ const HeroSection = () => {
             transition={{ delay: 0.6, duration: 0.8 }}
             className="font-display text-5xl md:text-7xl lg:text-8xl text-foreground mb-2"
           >
-            Karen Yadira
+            Cristian David
           </motion.h1>
-          
+
           <motion.div
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -97,7 +98,7 @@ const HeroSection = () => {
             transition={{ delay: 1, duration: 0.8 }}
             className="font-display text-5xl md:text-7xl lg:text-8xl text-foreground mb-8"
           >
-            Cristian David
+            Karen Yadira
           </motion.h1>
 
           {/* Date */}

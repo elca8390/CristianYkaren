@@ -7,7 +7,7 @@ import { Heart } from "lucide-react";
 
 const GallerySection = () => {
   const images = [
-    { src: coupleMain, alt: "Karen y Cristian" },
+    { src: coupleMain, alt: "Cristian y Karen" },
     { src: coupleRing, alt: "El anillo de compromiso" },
     { src: coupleProposal, alt: "La propuesta" },
     { src: coupleBouquet, alt: "Juntos con el bouquet" },
