@@ -7,7 +7,7 @@ const RSVPSection = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
-    guests: "1",
+    guests: "",
     attendance: "",
     message: "",
   });
@@ -202,7 +202,7 @@ const RSVPSection = () => {
                 value={formData.guests}
                 onChange={handleChange}
                 className="w-full pl-12 pr-4 py-3 rounded-xl border border-border bg-background font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
-                placeholder="1"
+                placeholder="Indica el numero de asistentes"
                 required
               />
             </div>
